@@ -180,7 +180,7 @@ void rival_domains() {
 		grey_waves_count++;
 		system("cls");
 	}
-	menu();
+	cout << "Have a nice day! " << endl << endl;
 }
 
 void menu() {
@@ -192,6 +192,7 @@ void menu() {
 	cout << "0 -> Escape" << endl << endl;
 	
 	cin >> you_are_the_oceans_grey_waves;
+	system("cls");
 	switch (you_are_the_oceans_grey_waves)
 	{
 	case 0:	break;
@@ -202,7 +203,7 @@ void menu() {
 		break;
 	case 2:
 		adb_screensize();
-		cout << "Your screen is " << maxX << " pixels wide, and " << maxY <<" pixels high"<< endl;
+		cout << "Your screen is " << maxX << " pixels wide, and " << maxY <<" pixels high"<< endl<<endl;
 		menu();
 		break;
 
@@ -223,7 +224,7 @@ int main()
 	//spawn Menu
 	menu();
 	
-    cout << "Goodbye my friend\n";
+    cout << "Closing\n";
 	return 0;
 }
 
