@@ -19,7 +19,7 @@ int  x_y[2] = { 0,0 }; //pair of coordinates
 int TimeBetweenTap = 1500; //its the time our phone takes to react to taps on the same screen changing interface, when it does not perform connections to the server
 int msgServerTime = 6000; //i guess 6 seconds is enough for connection to server if you dont live in Europe (since i do and im laggin sometimes "thonk")
 int RD_wait_time = 15000;//15 seconds for rival domains map seems like ok time
-const int n = 33;//32 is the length of whole adb tap command, later we add 1 so we also can fit the null
+const int n = 39;//39 is the length of whole adb tap command, later we add 1 so we also can fit the null
 int looperinio = 1;
 
 //range of the Rival domains difficulty button position IN % /100
@@ -78,7 +78,7 @@ void set_random_point(float min_x,float max_x, float min_y, float max_y) {//note
 void adb_click(int x, int y) {
 	string click;
 	//we have to turn integers into strings because otherwise you couldn't concatenate them to the rest :I
-	click = string("adb.exe shell input tap ") + to_string(x) + ' ' + to_string(y);
+	click = string(".\\adb\\adb.exe shell input tap ") + to_string(x) + ' ' + to_string(y);
 	//now we will do stuff nobody should do, if you do this you might break the universe in half or interfere with doctor's strange plan
 	//int n = click.length();//it had to be constant so i couldnt declare it here, it might change one day but i guess then ill just have to manually count the characters (also if the length changes it means that screen resolution went above 9999 pixels or the adb command changed so anyway everything would break;/
 	char char_array[n + 1]; //we declare array of characters
@@ -89,7 +89,7 @@ void adb_click(int x, int y) {
 void adb_screensize() {
 	string temp_string;
 	
-	system("adb.exe shell wm size>screenSize.txt"); //since im a monkey and google gives close to 0 documentation
+	system(".\\adb\\adb.exe shell wm size>screenSize.txt"); //since im a monkey and google gives close to 0 documentation
 	//about using adb as library in c++ (or im giga bad in searching google)(and also i dont want to include and compile whole adb here just so i can use two functions
 	//i just use windows console + precompiled adb to save screen size into file
 
@@ -180,7 +180,7 @@ void rival_domains() {
 		grey_waves_count++;
 		system("cls");
 	}
-	cout << "Finished ";
+	menu();
 }
 
 void menu() {
@@ -203,6 +203,7 @@ void menu() {
 	case 2:
 		adb_screensize();
 		cout << "Your screen is " << maxX << " pixels wide, and " << maxY <<" pixels high"<< endl;
+		menu();
 		break;
 
 	default:
