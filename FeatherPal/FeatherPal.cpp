@@ -148,8 +148,8 @@ void rival_domains() {
 	_beginthread(ThreadOfDestiny, 0, NULL);  // create the thread which we will use to let people go out of loop
 	//some kind of looperinio?
 	while (looperinio) {
-		cout << "Now battling Rival Domains!" << endl << endl << "Times fought: " << grey_waves_count << endl << endl;
-		cout << "Send 0 to stop!" << endl << endl << endl;
+		cout << "Now battling Rival Domains!" << " - Send 0 to stop!" << endl << endl << "Times fought: " << grey_waves_count << endl << endl<<endl;
+		
 		//select_difficulty
 		//int* click_pointer;//pointer to the array which has coordinates for next click;//not needed anymore
 		cout << "Choosing difficulty!" << endl << endl;
@@ -174,8 +174,10 @@ void rival_domains() {
 		Sleep(RD_wait_time);//we sleep
 		cout << "Closing end screen! " << endl << endl;
 		//closeRD
-		set_random_point(rd_OKXmin, rd_OKXmax, rd_OKYmin, rd_OKYmax);//we set random poin on the OK button
-		adb_click(x_y[0], x_y[1]);//we click on the ok button
+		set_random_point(rd_OKXmin, rd_OKXmax, rd_OKYmin, rd_OKYmax);//we set random point on the OK button
+		adb_click(x_y[0], x_y[1]);//we click on the end screen
+		Sleep(TimeBetweenTap*2);//we sleep so game can go to the ok button
+		adb_click(x_y[0], x_y[1]);//we click on the ok button 
 		Sleep(TimeBetweenTap);//we sleep so game can go back to the map choice
 		grey_waves_count++;
 		system("cls");
