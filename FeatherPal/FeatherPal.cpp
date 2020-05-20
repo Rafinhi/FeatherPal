@@ -59,12 +59,12 @@ float AB_OK_Ymin = 0.47;
 float AB_OK_Ymax = 0.50;
 
 
-void set_random_point(float min_x,float max_x, float min_y, float max_y) {//note to self, why did i pick C++ and now i have to use pointers because i cannot return array natively ;///note 2: im stupid, lets just not return anything and just set global array with the coordinates
-	//unsigned int seed;//its allocated every time function runs so it will rarely be the same but apparently not possibru in c++
+void set_random_point(float min_x,float max_x, float min_y, float max_y) {//note 2:lets just not return anything and just set global array with the coordinates
+	
 	int omega_yato,yato_min,yato_max;	//we need some backup variables to deal with multiplying floats and ints while also dealing with rand
 	//static int  x_y[2]; //its global now
 
-	srand(time(NULL));//we use time to get better randomization,i didnt dont want to add another library, but just using unsigned int which we dont set value to so it has value of some random memory space  made my visual studio go cowabunga
+	srand(time(NULL));//we use time to get better randomization,i didnt want to add another library, but just using unsigned int which we dont set value to so it has value of some random memory space  made my visual studio go cowabunga
 	yato_min = maxX * min_x;//minimum pixel position of x coordinate
 	yato_max = maxX * max_x;//maximum pixel position of x coordinate
 	omega_yato = rand(); //some random number
@@ -90,7 +90,7 @@ void adb_screensize() {
 	string temp_string;
 	
 	system(".\\adb\\adb.exe shell wm size>screenSize.txt"); //since im a monkey and google gives close to 0 documentation
-	//about using adb as library in c++ (or im giga bad in searching google)(and also i dont want to include and compile whole adb here just so i can use two functions
+	//about using adb as library in c++ , and also i dont want to include and compile whole adb here just so i can use two functions
 	//i just use windows console + precompiled adb to save screen size into file
 
 	//here we read file and extract info about screensize;/
@@ -103,7 +103,7 @@ void adb_screensize() {
 				
 		maxY = stoi(temp_string.substr(temp_string.size() - 5, temp_string.size()-2));//this is the position of screen height in the file, we change string into int
 		maxX = stoi(temp_string.substr(temp_string.size() - 11, temp_string.size() - 8));//position of width
-		//and woah, we suddenly have magic knowledge of physical screen size, also note to self: if the screen height is less than 1000 it will break, but i dont think there are any phones who work with feh and also have screen which is like 740x480  :3
+		//and woah, we suddenly have magic knowledge of physical screen size, also note to self: if the screen height is less than 1000 it will break, but i dont think there are any phones who work with feh and also have screen which is very small  :3
 		}
 
 void print_feh_the_owl() {
